@@ -94,10 +94,12 @@ class App extends Component {
        newArr.push(item)
      })
 
-     newArr.map(item => {
+     newArr.map((item, key) => {
        if(+idd === item.id) {
-         item.count -= 1
-         arr.push(item)
+        //  item.count -= 1
+        //  arr.push(item)
+         arr[key].count -=1
+         console.log(arr[key].count)
        }
      })
 
