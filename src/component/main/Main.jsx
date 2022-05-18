@@ -3,35 +3,6 @@ import React from "react";
 import './Main.scss'
 import Product from "./product";
 
-let serverArr = [
-  {
-    id: 1,
-    title: 'Sushi',
-    desc: 'Finest fish and veggies',
-    price: '22.99'
-  },
-  {
-    id: 2,
-    title: 'Schnitzel',
-    desc: 'A german specialty!',
-    price: '16.50'
-  },
-  {
-    id: 3,
-    title: 'Barbecue Burger',
-    desc: 'American, raw, meaty',
-    price: '12.99'
-  },
-  {
-    id: 4,
-    title: 'Green Bowl',
-    desc: 'Healthy...and green...',
-    price: '18.99'
-  },
-]
-
-
-
 export default function Main(props) {
 
   return(
@@ -52,6 +23,7 @@ export default function Main(props) {
             <Product
               product={props.product}
               addProd={props.addProd}
+              btn={props.btn}
             />
 
           </ul>

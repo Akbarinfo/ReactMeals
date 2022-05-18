@@ -31,7 +31,7 @@ export default function Modal(props) {
         </ul>
         <div className="modal__totalbox d-flex justify-content-between align-items-center">
           <p>Total Amount</p>
-          <p>$39.49</p>
+          <p>${props.total.toFixed(2)}</p>
         </div>
         <div className="d-flex float-end">
           <button onClick={props.close} className="modal__btnclose">Close</button>

@@ -5,6 +5,9 @@ import Hero from './component/hero/Hero';
 import Main from './component/main/Main';
 import Modal from './component/main/modal/Modal';
 
+let arr = []
+let allPrice = 0
+
 class App extends Component {
   constructor(props) {
     super()
@@ -42,11 +45,10 @@ class App extends Component {
 
       newProuct: [],
       modal: false,
-
+      btn: false
     }
   }
   render() {
-
     //Modal open
     let modalOpen = () => {
       this.setState({modal: true})
@@ -56,25 +58,35 @@ class App extends Component {
       this.setState({modal: false})
     }
 
+    ///btn
+    let btns = () => {
+      this.setState({btn: true})
+      setTimeout(() => {
+        this.setState({btn: false})
+      }, 300)
+    }
+
     //Added Product
     let addProduct = (e) => {
       e.preventDefault()
       let idd = e.target.id
       let value = e.target[0].value
       let newArr = []
-      let arr = []
+
       this.state.product.map(item => {
         newArr.push(item)
       })
 
-      newArr.map(item => {
-        if(+idd === item.id) {
-          item.count += +value
-          arr.push(item)
-        }
-      })
+      let existFood = arr.find(food => food.id === +idd)
+      if(!existFood) {
+        let foodFromNewArr = newArr.find(food => food.id === +idd)
+        foodFromNewArr.count += +value
+        arr.push(foodFromNewArr)
+      } else {
+        existFood.count += +value
+      }
 
-      this.setState({newProuct: [...this.state.newProuct, ...arr]})
+      this.setState({newProuct: [...arr]})
       this.setState({product: [...newArr]})
     }
 
@@ -84,44 +96,41 @@ class App extends Component {
       allCount += +item.count
     })
 
+    ///totalPrice
+    let totalPrice = 0
+    this.state.newProuct.map(pri => {
+      let price = 0
+      let coun = 0
+
+      price += +pri.price
+      coun += +pri.count
+      allPrice = coun * price
+
+      totalPrice += allPrice
+
+    })
+
     let minusBtn = (e) => {
-    //  console.log(e.nativeEvent.path[1].id)
-
-     let idd = e.nativeEvent.path[1].id
-     let newArr = []
-     let arr = []
-     this.state.newProuct.map(item => {
-       newArr.push(item)
-     })
-
-     newArr.map((item, key) => {
-       if(+idd === item.id) {
-        //  item.count -= 1
-        //  arr.push(item)
-         arr[key].count -=1
-         console.log(arr[key].count)
-       }
-     })
-
-     this.setState({newProuct: [...this.state.newProuct, ...arr]})
+      let idd = e.nativeEvent.path[1].id
+      arr.map(item => {
+        if(item.id === +idd) {
+          item.count -= 1
+          if(item.count === 0) {
+           arr = arr.filter( el => el.id !== +idd);
+          }
+        }
+      })
+      this.setState({newProuct: [...arr]})
     }
 
     let plusBtn = (e) => {
       let idd = e.nativeEvent.path[1].id
-      let newArr = []
-      let arr = []
-      this.state.newProuct.map(item => {
-        newArr.push(item)
-      })
-
-      newArr.map(item => {
-        if(+idd === item.id) {
+      arr.map(item => {
+        if(item.id === +idd) {
           item.count += 1
-          arr.push(item)
         }
       })
-
-      this.setState({newProuct: [...this.state.newProuct, ...arr]})
+      this.setState({newProuct: [...arr]})
     }
 
     return(
@@ -129,11 +138,13 @@ class App extends Component {
         <Header
         mopen={modalOpen}
         counts={allCount}
+        btn={this.state.btn}
         />
         <Hero />
         <Main
           product={this.state.product}
           addProd={addProduct}
+          btn={btns}
         />
         <Modal
           open={this.state.modal}
@@ -141,10 +152,10 @@ class App extends Component {
           product={this.state.newProuct}
           minus={minusBtn}
           plus={plusBtn}
-        />
+          total={totalPrice}
+        />[]
       </>
     )
   }
 }
-
 export default App;

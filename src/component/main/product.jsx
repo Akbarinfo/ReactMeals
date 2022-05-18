@@ -20,7 +20,7 @@ export default function Product(props) {
               <span className="card__span">Amount</span>
               <input className="card__input" id={"input"+key} type="number" defaultValue={"1"} min={'1'} max={'5'} />
             </label>
-            <button className="card__btn">+ Add</button>
+            <button onClick={props.btn} className="card__btn">+ Add</button>
           </form>
         </div>
       </li>
