@@ -1,0 +1,126 @@
+.modal {
+  display: block;
+  position: fixed;
+  transition: all 0.2s linear;
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  &__main {
+    width: 640px;
+    position: fixed;
+    top: 200px;
+    left: calc(50% - 320px);
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    padding: 16px;
+    animation: modalAnime 0.3s ease-out forwards;
+    z-index: 300;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    border-bottom: 2px solid #8a2b06;
+    padding: 16px 0;
+    margin: 16px 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #363636;
+    margin-bottom: 8px;
+  }
+
+  &__pricebox {
+    width: 160px;
+  }
+
+  &__price {
+    font-weight: 700;
+    color: #8a2b06;
+  }
+
+  &__count {
+    font-weight: 700;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #363636;
+    padding: 4px 12px;
+  }
+
+  &__btn {
+    width: 48px;
+    background: none;
+    border: 1px solid #8a2b06;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    color: #8a2b06;
+    margin: 4px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #8a2b06;
+      color: #fff;
+    }
+  }
+
+  &__totalbox {
+    font-weight: 700;
+    font-size: 24px;
+    margin: 16px 0;
+  }
+
+  &__btnclose,
+  &__btnorder {
+    background: none;
+    border: 1px solid #8a2b06;
+    font-size: inherit;
+    border-radius: 25px;
+    padding: 8px 32px;
+    margin-left: 16px;
+    transition: all 0.4s linear;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #5a1a01;
+      border-color: #5a1a01;
+      color: #fff;
+    }
+  }
+
+  &__btnorder {
+    background-color: #8a2b06;
+    color: #fff;
+
+    &:hover {
+      background-color: #5a1a01;
+      border-color: #5a1a01;
+    }
+  }
+}
+
+@keyframes modalAnime {
+  from {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

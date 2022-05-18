@@ -1,0 +1,120 @@
+.main-header {
+  position: relative;
+  max-width: 720px;
+  width: 90%;
+  background-color: #383838;
+  border-radius: 14px;
+  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: #fff;
+  padding: 16px;
+  margin: auto;
+  margin-top: -160px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 26px;
+  }
+
+  &__text {
+    margin: 16px 0;
+  }
+}
+
+
+.card {
+  max-width: 60rem;
+  width: 90%;
+  animation: cardAnime 1s ease-out forwards;
+  margin: 32px auto;
+
+  &__main {
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 16px;
+    margin: 16px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  &__desc {
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ad5502;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__span {
+    font-weight: 700;
+    margin-right: 16px;
+  }
+
+  &__input {
+    display: inline-block;
+    width: 48px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: inherit;
+    padding-left: 8px;
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  &__btn {
+    background-color: #8a2b06;
+    border: 1px solid #8a2b06;
+    border-radius: 20px;
+    font-size: inherit;
+    font-weight: 700;
+    color: white;
+    padding: 4px 32px;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background-color: #641e03;
+      border-color: #641e03;
+    }
+  }
+
+}
+
+@keyframes cardAnime {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
